@@ -21,10 +21,16 @@ public class TaskController {
     }
 
     @PostMapping("/create")
-     public void create(Task task){
+     public String create(Task task){
         long id = tasks.size() + 1L;
         tasks.add(new Task(id, task.getName(), task.getDate()));
+
+        return "redirect:/list";
      }
     
+     @GetMapping("/list")
+     public String List() {
+        return "list";
+     }
     
 }
